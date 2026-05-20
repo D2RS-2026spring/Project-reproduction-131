@@ -3,10 +3,10 @@
 ### 小组基本信息
 - 小组名称：环境科学研究小组
 - 小组成员：
-  - 张骏辉 2025303110016 @Zhang-JunH
-  - 苗芳源 2025303110021 @FangYuan-Miao
-  - 胡金忆 2025303110020 @taro-2026
-  - 李艳峰 2025303110142 @liyanfeng123
+  - 张骏辉 2025303110016 [@Zhang-JunH](https://github.com/Zhang-JunH)
+  - 苗芳源 2025303110021 [@FangYuan-Miao](https://github.com/FangYuan-Miao)
+  - 胡金忆 2025303110020 [@taro-2026](https://github.com/taro-2026)
+  - 李艳峰 2025303110142 [@liyanfeng123](https://github.com/liyanfeng123)
     
 
 ## 一、项目基本信息
