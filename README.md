@@ -1,5 +1,6 @@
 # 利用机器学习预测重金属在土壤上的吸附能力及全球土壤吸附能力分布图
-## 小组基本信息
+
+### 小组基本信息
 - 小组名称：环境科学研究小组
 - 小组成员：
   - 张骏辉 2025303110016 @Zhang-JunH
@@ -57,31 +58,36 @@ python readData_cv.py
 python plot_4figures.py
 ```
 ## 四、复现结果汇总
-本次共复现 8 种机器学习模型，采用 10 折交叉验证：
-表格
-模型	测试集 RMSE ↓	测试集 R² ↑	表现评价
-Gradient Boosting	0.0369	0.8677	最优
-Extra Trees (ET)	0.0458	0.8081	优秀
-K-Nearest Neighbors (KNN)	0.0676	0.5939	良好
-Random Forest (RF)	0.0678	0.5605	良好
-Linear Regression	0.0810	0.4023	一般
-Ridge Regression	0.0810	0.4030	一般
-CART Decision Tree	0.0815	0.3942	一般
-Support Vector Machine (SVM)	0.1111	0.2035	较弱
-核心结论：基于树的集成模型（Gradient Boosting、Extra Trees）在本任务中表现最优，说明土壤重金属吸附与理化性质之间存在显著的非线性关系。
+本次实验基于10 折交叉验证，成功复现了8 种机器学习模型在土壤重金属吸附量预测任务上的性能表现，以 ** 测试集均方根误差（RMSE）与决定系数（R²）** 作为核心评价指标。
+
+结果显示，不同模型的预测能力差异显著。Gradient Boosting（梯度提升树）表现最优，测试集 RMSE 仅为0.0369，R² 高达0.8677，具备出色的拟合与泛化能力；紧随其后的是Extra Trees（ET，极端随机树），测试集 RMSE 为0.0458，R² 为0.8081，同样达到优秀水平。K-Nearest Neighbors（KNN）与Random Forest（RF，随机森林）表现良好，测试集 RMSE 分别为0.0676和0.0678，R² 分别为0.5939和0.5605，预测效果稳定可靠。
+
+相比之下，传统线性模型表现一般，Linear Regression（线性回归）与Ridge Regression（岭回归）的测试集 RMSE 均为0.0810，R² 分别为0.4023和0.4030；CART Decision Tree（CART 决策树）测试集 RMSE 为0.0815，R² 为0.3942，整体预测精度有限。Support Vector Machine（SVM，支持向量机）表现最弱，测试集 RMSE 为0.1111，R² 仅为0.2035，难以有效捕捉数据规律。
+
+#### 核心结论：基于树结构的集成学习模型（Gradient Boosting、Extra Trees）在本任务中显著优于线性模型、单棵决策树与 SVM 模型，表明土壤重金属吸附量与各项理化性质之间存在复杂的非线性关联，集成模型凭借强大的非线性拟合能力，更适用于该预测任务。
 
 ## 五、复现过程问题与解决方法
 ### 1、缺少依赖库（shap、ipython、openpyxl）
 解决：使用统一安装命令 uv pip install 一次性安装。
-
+```bash
+uv pip install numpy pandas scikit-learn matplotlib shap ipython openpyxl xgboost
+```
 ### 2、文件名不匹配（如 linear_regression_cv.py 找不到）
-
 解决：使用项目真实文件名 Linear_cv.py、Ridge_cv.py。
-
+```bash
+python Linear_cv.py
+python Ridge_cv.py
+python SVM_cv.py
+python gradientboosting_cv.py
+python ET_cv.py
+python KNN_cv.py
+python CART_cv.py
+```
 ### 3、图表保存路径报错
-
 解决：将保存路径改为当前目录。
-
+```bash
+plt.savefig('model_4panel_results.png', dpi=300)
+```
 ### 4、SGD 模型出现数值溢出（inf）
 
 原因：SGD 对数据尺度敏感，未标准化导致不稳定。
