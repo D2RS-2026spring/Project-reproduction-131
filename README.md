@@ -7,6 +7,7 @@
   - 苗芳源 2025303110021 @FangYuan-Miao
   - 胡金忆 2025303110020 @taro-2026
   - 李艳峰 2025303110142 @liyanfeng123
+    
 
 ## 一、项目基本信息
 - **项目名称**：Predicting Heavy Metal Adsorption on Soil with Machine Learning and Mapping Global Distribution of Soil Adsorption Capacities
