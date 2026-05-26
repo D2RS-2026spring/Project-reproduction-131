@@ -64,6 +64,8 @@ python plot_4figures.py
 
 相比之下，传统线性模型表现一般，Linear Regression（线性回归）与Ridge Regression（岭回归）的测试集 RMSE 均为0.0810，R² 分别为0.4023和0.4030；CART Decision Tree（CART 决策树）测试集 RMSE 为0.0815，R² 为0.3942，整体预测精度有限。Support Vector Machine（SVM，支持向量机）表现最弱，测试集 RMSE 为0.1111，R² 仅为0.2035，难以有效捕捉数据规律。
 
+<img width="4800" height="3600" alt="image" src="https://github.com/user-attachments/assets/6e73bfdb-3c7a-480e-8cad-583923f02895" />
+
 #### 核心结论：基于树结构的集成学习模型（Gradient Boosting、Extra Trees）在本任务中显著优于线性模型、单棵决策树与 SVM 模型，表明土壤重金属吸附量与各项理化性质之间存在复杂的非线性关联，集成模型凭借强大的非线性拟合能力，更适用于该预测任务。
 
 ## 五、复现过程问题与解决方法
