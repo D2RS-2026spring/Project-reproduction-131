@@ -12,7 +12,7 @@
 ## 一、项目基本信息
 - **项目名称**：Predicting Heavy Metal Adsorption on Soil with Machine Learning and Mapping Global Distribution of Soil Adsorption Capacities
 - **发表期刊**：Environmental Science & Technology
-- **DOI**：10.1021/acs.est.1c0247
+- **DOI**：10.1021/acs.est.1c02479
 - **复现环境**：Windows 10 / Python 3.10.18 / uv 虚拟环境
 
 ## 二、可复现性评估结论
