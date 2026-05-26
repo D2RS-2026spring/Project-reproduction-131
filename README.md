@@ -24,10 +24,13 @@
 **结论：本项目完全满足可重复研究要求。**
 
 ## 三、复现步骤
+### 前期准备
+#### 新建一个新文件夹（New Folder）于指定位置，用 Positron 软件打开，TERMINAL 对话框中输入下列代码并运行
 ### 1. 克隆仓库
 ```bash
-git clone https://github.com/D2RS-2026spring/Project-reproduction-131.git
-cd Project-reproduction-131/code
+git clone https://github.com/KuanHuang/predicting-heavy-metal-adsorption-in-soil.git
+cd predicting-heavy-metal-adsorption-in-soil
+cd code
 ```
 ### 2. 创建并激活虚拟环境（Windows）
 ```bash
@@ -54,6 +57,44 @@ python CART_cv.py
 python readData_cv.py
 ```
 ### 6. 生成模型对比图（4 合 1 专业图表）
+```bash
+import matplotlib.pyplot as plt
+import numpy as np
+models = ['Linear', 'Ridge', 'SVM', 'CART', 'KNN', 'RF', 'ET', 'GB']
+test_rmse = [0.0810, 0.0810, 0.1111, 0.0815, 0.0676, 0.0678, 0.0458, 0.0369]
+test_r2 = [0.4023, 0.4030, 0.2035, 0.3942, 0.5939, 0.5605, 0.8081, 0.8677]
+train_rmse = [0.0755, 0.0755, 0.0993, 0.0755, 0.0309, 0.0447, 0.0335, 0.0272]
+train_r2 = [0.2816, 0.2815, 0.2525, 0.2816, 0.8788, 0.7482, 0.8724, 0.9151]
+plt.rcParams['font.sans-serif'] = ['Arial']
+plt.figure(figsize=(16, 12))
+plt.subplot(2, 2, 1)
+plt.bar(models, test_rmse, color='#ff7f0e')
+plt.title('Test RMSE', fontsize=14)
+plt.ylabel('RMSE')
+plt.xticks(rotation=45)
+plt.grid(alpha=0.3)
+plt.subplot(2, 2, 2)
+plt.bar(models, test_r2, color='#2ca02c')
+plt.title('Test $R^2$', fontsize=14)
+plt.ylabel('$R^2$')
+plt.xticks(rotation=45)
+plt.grid(alpha=0.3)
+plt.subplot(2, 2, 3)
+plt.bar(models, train_rmse, color='#1f77b4')
+plt.title('Train RMSE', fontsize=14)
+plt.ylabel('RMSE')
+plt.xticks(rotation=45)
+plt.grid(alpha=0.3)
+plt.subplot(2, 2, 4)
+plt.bar(models, train_r2, color='#d62728')
+plt.title('Train $R^2$', fontsize=14)
+plt.ylabel('$R^2$')
+plt.xticks(rotation=45)
+plt.grid(alpha=0.3)
+plt.tight_layout()
+plt.savefig('model_4panel_results.png', dpi=300)
+plt.show()
+```
 ```bash
 python plot_4figures.py
 ```
