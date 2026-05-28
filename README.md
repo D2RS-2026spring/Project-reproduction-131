@@ -57,7 +57,8 @@ python CART_cv.py
 python readData_cv.py
 ```
 ### 6. 生成模型对比图（4 合 1 专业图表）
-```bash
+#### 新建一个 python 文件以可视化结果，命名为 plot_4figures.py（数据来自复现结果，仅做一个可视化演示，其他结果可视化类似）
+```py
 import matplotlib.pyplot as plt
 import numpy as np
 models = ['Linear', 'Ridge', 'SVM', 'CART', 'KNN', 'RF', 'ET', 'GB']
@@ -95,6 +96,7 @@ plt.tight_layout()
 plt.savefig('model_4panel_results.png', dpi=300)
 plt.show()
 ```
+#### 复制上面代码并运行，即可实现复现结果可视化
 ```bash
 python plot_4figures.py
 ```
