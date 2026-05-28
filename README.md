@@ -37,6 +37,7 @@ cd code
 uv venv
 .\.venv\Scripts\activate
 ```
+#### 弹出对话框，选择 “Yes”
 ### 3. 安装全部依赖（一次装完，不报错）
 ```bash
 uv pip install numpy pandas scikit-learn matplotlib shap ipython openpyxl xgboost
@@ -56,8 +57,9 @@ python KNN_cv.py
 python CART_cv.py
 python readData_cv.py
 ```
+#### 可按顺序跑出8个python文件结果
 ### 6. 生成模型对比图（4 合 1 专业图表）
-#### 新建一个 python 文件以可视化结果，命名为 plot_4figures.py（数据来自复现结果，仅做一个可视化演示，其他结果可视化类似）
+#### 新建一个 python 文件以可视化结果，命名为 plot_4figures.py，保存在 code 中（数据来自复现结果，仅做一个可视化演示，其他结果可视化类似）
 ```py
 import matplotlib.pyplot as plt
 import numpy as np
@@ -102,12 +104,22 @@ python plot_4figures.py
 ```
 ## 四、复现结果汇总
 本次实验基于10 折交叉验证，成功复现了8 种机器学习模型在土壤重金属吸附量预测任务上的性能表现，以 ** 测试集均方根误差（RMSE）与决定系数（R²）** 作为核心评价指标。
+以下是其中两个模型复现结果：
+### Ridge_cv.py 运行结果
+<img width="844" height="818" alt="image" src="https://github.com/user-attachments/assets/8dfa84f2-c61c-47e0-8103-dc416fe8b185" />
+<img width="805" height="211" alt="image" src="https://github.com/user-attachments/assets/d34651c6-fe1e-4822-afb0-3d1fa553f12d" />
+
+### KNN_cv.py 运行结果
+<img width="836" height="653" alt="image" src="https://github.com/user-attachments/assets/ba925999-5ae7-44c7-b00b-418fbbc2ab66" />
+<img width="836" height="381" alt="image" src="https://github.com/user-attachments/assets/7ea53ae9-f4e0-455f-bfc9-da61905aff52" />
+
+### 将8种模型运行结果汇总绘制对比图如下：
+
+<img width="4800" height="3600" alt="image" src="https://github.com/user-attachments/assets/6e73bfdb-3c7a-480e-8cad-583923f02895" />
 
 结果显示，不同模型的预测能力差异显著。Gradient Boosting（梯度提升树）表现最优，测试集 RMSE 仅为0.0369，R² 高达0.8677，具备出色的拟合与泛化能力；紧随其后的是Extra Trees（ET，极端随机树），测试集 RMSE 为0.0458，R² 为0.8081，同样达到优秀水平。K-Nearest Neighbors（KNN）与Random Forest（RF，随机森林）表现良好，测试集 RMSE 分别为0.0676和0.0678，R² 分别为0.5939和0.5605，预测效果稳定可靠。
 
 相比之下，传统线性模型表现一般，Linear Regression（线性回归）与Ridge Regression（岭回归）的测试集 RMSE 均为0.0810，R² 分别为0.4023和0.4030；CART Decision Tree（CART 决策树）测试集 RMSE 为0.0815，R² 为0.3942，整体预测精度有限。Support Vector Machine（SVM，支持向量机）表现最弱，测试集 RMSE 为0.1111，R² 仅为0.2035，难以有效捕捉数据规律。
-
-<img width="4800" height="3600" alt="image" src="https://github.com/user-attachments/assets/6e73bfdb-3c7a-480e-8cad-583923f02895" />
 
 #### 核心结论：基于树结构的集成学习模型（Gradient Boosting、Extra Trees）在本任务中显著优于线性模型、单棵决策树与 SVM 模型，表明土壤重金属吸附量与各项理化性质之间存在复杂的非线性关联，集成模型凭借强大的非线性拟合能力，更适用于该预测任务。
 
